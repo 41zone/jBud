@@ -1,7 +1,7 @@
 jBud
 ====
 
-jBud , A Javascript Framework, AJAX, Links, CMD, DOM etc.
+?jBud , A Javascript Framework, AJAX, Links, CMD, DOM etc.
 
 ## FIXED
 ### 2014/03/29
