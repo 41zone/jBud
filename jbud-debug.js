@@ -2641,7 +2641,11 @@
 				if(!style) return undefined;
 				var iname = name.toLowerCase(),handler;
 				if((handler = this.ie2filter[iname])) handler(style,value,elem);
-				else style[name] = value;
+				else {
+					try {
+						style[name] = value;
+					} catch(err) {}
+				} 
 			}
 	};
 	jBud.dom = {
@@ -3037,8 +3041,11 @@
 					if(jBud.isDocument(elem)) return Math.max(doc.scrollWidth,doc.clientWidth);
 					return elem.offsetWidth-style.padding(elem,pos)-style.value(elem,"border","Width",pos);
 				}
+				value = style.defpx(value);
 				return this.each(function(index) {
-					this.style.width = style.defpx(value);
+					try {
+						this.style.width = value;
+					} catch(err) {}
 				});
 			},
 			/**
@@ -3060,7 +3067,10 @@
 				}
 				value = style.defpx(value);
 				return this.each(function(index) {
-					this.style.height = value;
+					try {
+						this.style.height = value;
+					} catch(err) {}
+					
 				});
 			},
 			/**
