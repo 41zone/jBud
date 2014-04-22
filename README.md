@@ -4,6 +4,9 @@ jBud
 jBud , A Javascript Framework, AJAX, Links, CMD, DOM etc.
 
 ## FIXED
+### 2014/04/22
+\#015 修正基于table元素memory构建失败
+
 ### 2014/03/29
 \#014 IE8中间或出现的样式赋值报告的“参数错误”
 

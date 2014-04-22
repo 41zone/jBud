@@ -2650,8 +2650,12 @@
 	};
 	jBud.dom = {
 			memory:function(html){
-				var fragment = document.createDocumentFragment();
-				var con = document.createElement("div");
+				var tag = 'div';
+				//#015 修正基于table元素memory构建失败
+				if(html.indexOf('<tr') > -1) tag = 'tbody';
+				else if (html.indexOf('<td') > -1 || html.indexOf('<th') > -1) tag = 'tr';
+				else if (html.indexOf('<caption') > -1 || html.indexOf('<tbody') > -1 || html.indexOf('<thead') > -1 || html.indexOf('<tfoot') > -1) tag = 'table';
+				var con = document.createElement(tag);
 				con.innerHTML = html;
 				return jBud.merge([],con.childNodes);
 			},
