@@ -11,7 +11,7 @@ jBud , A Javascript Framework, AJAX, Links, CMD, DOM etc.
 \#014 IE8中间或出现的样式赋值报告的“参数错误”
 
 ### 2013/12/10 - 2014/03/29
-\#013 修改对于window获取高度时，在IE8-浏览器中的bug问题
+\#013 修改对于window获取高度时，在 IE8以下 浏览器中的bug问题
 
 \#012 修改UUID算法
 
@@ -19,9 +19,9 @@ jBud , A Javascript Framework, AJAX, Links, CMD, DOM etc.
 
 \#010 解决对非方法的HTML进行构建的问题
 
-\#009 解决IE8-浏览器无法正常支持透明的计算
+\#009 解决IE8以下浏览器无法正常支持透明的计算
 
-\#008 对于IE7一下浏览器，不支持opacity属性直接赋值
+\#008 对于IE7以下浏览器，不支持opacity属性直接赋值
 
 \#007 解决无法正确追加文本的问题
 
@@ -31,7 +31,7 @@ jBud , A Javascript Framework, AJAX, Links, CMD, DOM etc.
 
 \#004 解决在触发本有事件时，数据没有传递的问题
 
-\#003 解决在IE条件下重复追事件的问题,fixed。
+\#003 解决在IE条件下重复事件的问题,fixed。
 
 \#002 修正重复无条件的执行所有的handler事件
 
