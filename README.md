@@ -3,6 +3,10 @@ jBud
 
 jBud , A Javascript Framework, AJAX, Links, CMD, DOM etc.
 
+## ADDED
+### 2014/04/24
+\#ADD-001 添加对异步解析失败后回调处理
+
 ## FIXED
 ### 2014/04/22
 \#015 修正基于table元素memory构建失败

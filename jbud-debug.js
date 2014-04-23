@@ -4082,9 +4082,16 @@
 				request.onreadystatechange = function() {
 					if(request.readyState == 4) {
 						if(request.status == 200) {
-							var result=self.convert(request,opts.dataType);
-							opts.success(result,request.statusText,request);
-							links.attack(result,request.statusText,request);
+							//#ADD-001 添加对异步解析失败后回调处理
+							var result = undefined;
+							try {
+								result = self.convert(request,opts.dataType);
+								opts.success(result,request.statusText,request);
+								links.attack(result,request.statusText,request);
+							} catch(e) {
+								opts.error(e.message,request);
+								links.retreat(undefined,e.message,request);
+							}
 						} else {
 							opts.error(isAbort?"timeout":request.statusText,request);
 							links.retreat(undefined,request.statusText,request);
