@@ -2381,6 +2381,8 @@
 					jBud.bud(elem).events = {};
 					return ;
 				}
+				//#017 解决删除事件当为空时导致的事件无法加载问题
+				if(!events) return ;
 				handlers = events[type];
 				fireMap = handlers[this.mapName];
 				if(typeof handler === 'function') {
@@ -2652,9 +2654,10 @@
 			memory:function(html){
 				var tag = 'div';
 				//#015 修正基于table元素memory构建失败
-				if(html.indexOf('<tr') > -1) tag = 'tbody';
-				else if (html.indexOf('<td') > -1 || html.indexOf('<th') > -1) tag = 'tr';
-				else if (html.indexOf('<caption') > -1 || html.indexOf('<tbody') > -1 || html.indexOf('<thead') > -1 || html.indexOf('<tfoot') > -1) tag = 'table';
+				if(html.indexOf('<tr') == 0) tag = 'tbody';
+				else if (html.indexOf('<td') == 0 || html.indexOf('<th') == 0) tag = 'tr';
+				else if (html.indexOf('<caption') == 0 || html.indexOf('<tbody') == 0 || html.indexOf('<thead') == 0 || html.indexOf('<tfoot') == 0) tag = 'table';
+				else if (html.indexOf('<li') == 0 || html.indexOf('<ol') == 0) tag = 'ul';
 				var con = document.createElement(tag);
 				con.innerHTML = html;
 				return jBud.merge([],con.childNodes);
@@ -4521,7 +4524,10 @@
 				return this.current(true);
 			},
 			parent:function(url){
-				return url.match(this._regexp_.parent)[0];
+				//#016 修正解析当前访问地址为null的情况
+				var href = url.match(this._regexp_.parent);
+				if(!href) return undefined;
+				return href[0];
 			},
 			absolute:function(script){
 				return script.hasAttribute?script.src : script.getAttribute("src",4);
@@ -4762,7 +4768,7 @@
 	//Define Config
 	var selfScript = ModuleUtils.current(true),absolutePath = ModuleUtils.absolute(selfScript);
 	var basedir = ModuleUtils.parent(absolutePath) || ModuleUtils.parent(window.location.href);
-	
+
 	//读取默认配置页
 	var configPath = selfScript.getAttribute("data-config");
 	if(configPath && typeof configPath === 'string' && (configPath = jBud.trim(configPath)).length > 0);

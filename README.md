@@ -8,6 +8,12 @@ jBud , A Javascript Framework, AJAX, Links, CMD, DOM etc.
 \#ADD-001 添加对异步解析失败后回调处理
 
 ## FIXED
+### 2014/05/07
+\#017 解决删除事件当为空时导致的事件无法加载问题
+
+### 2014/04/24
+\#016 修正解析当前访问地址为null的情况
+
 ### 2014/04/22
 \#015 修正基于table元素memory构建失败
 
